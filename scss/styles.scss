@@ -1,0 +1,46 @@
+@import "variables";
+@import "header";
+@import "footer";
+@import "donate";
+
+$wheal: #FFFFDA;
+
+body {
+  height: 100%;
+  margin: 0;
+  font-family: 'ProximaNova', sans-serif;
+  background-color: $wheal;
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+.maptalks-wrapper {
+  background-color: $wheal;
+}
+
+.chart-title {
+  text-align: center;
+  width: 60%;
+  margin: 100px auto 50px auto;
+  color: #1D1194;
+  font-size: 30px;
+}
+
+div.buttons {
+  width: max-content;
+  margin: auto;
+  display: flex;
+}
+
+div.button {
+  cursor:pointer;
+  width: max-content;
+  padding: 5px;
+  background: #1D1194;
+  margin-right: 20px;
+  color: $wheal;
+}
+
+canvas {
+  width: 100%;
+}
