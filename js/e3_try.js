@@ -30,6 +30,7 @@ Promise.all([
     d3.csv("data/map_labels.csv")
 ]).then(function(data) {
 
+
     //add geojson with admin boundaries
     const layer = new maptalks.VectorLayer('v', data[1]).setStyle({ 'symbol' : getSymbol('#FFFFDA') }).addTo(map);
 
@@ -45,6 +46,9 @@ Promise.all([
         ];
     }
 
+
+
+
     //add animated points
     var e3Layer = new maptalks.E3Layer('e3', getECOption())
         .addTo(map);
@@ -58,21 +62,6 @@ Promise.all([
             geoCoordMap[d.receiver] = [+d.lon_receiver, +d.lat_receiver];
         });
 
-        // var geoCoordMap = {
-        //     'станція АРОМАТНА': [35.888025, 48.628473],
-        //     'станція БЕРЕГОВА': [31.044189, 46.632276],
-        //     'станція БУРШТИН': [24.6477491, 49.217461],
-        //     'станція ЛАДИЖИН':[29.1503679,48.609462],
-        //     'станція БАЛИН':[26.6346,48.90661],
-        //     "станція ЧОП":[22.2055633,48.432477]
-        // };
-
-
-        var BJData = [
-            // [{name:'станція АВДІЇВКА'},{name:'станція БУРШТИН',value:50}],
-            // [{name:'станція АВДІЇВКА'},{name:'станція ЕНЕРГОДАР',value:50}],
-        ];
-
         var SHData = [];
         var GZData = [];
 
@@ -80,11 +69,15 @@ Promise.all([
         const gzk_cluster_no = data[0].filter(function(d){ return d.gzk_cluster === "no"});
 
         gzk_cluster_yes.forEach(function(d,i){
-            SHData.push([{name: d.sender, value: 80}, {name: d.receiver, value: 5}]);
+            if(i < 50) {
+                SHData.push([{name: d.sender, value: 80}, {name: d.receiver, value: 10}]);
+            }
         });
 
         gzk_cluster_no.forEach(function(d,i){
-            GZData.push([{name: d.sender}, {name: d.receiver, value: d.no_wagons/5000 }]);
+            if(i < 80) {
+                GZData.push([{name: d.sender}, {name: d.receiver, value: 10}]);
+            }
         });
 
 
@@ -113,65 +106,109 @@ Promise.all([
         };
 
         // var color = ['#a6c84c', '#E78B8A', '#46bee9'];
-        var color = ['#1D1194', '#E78B8A'];
+        var color = ['rgba(29, 17, 148, 0.8)', 'rgba(29, 17, 148, 0.8)'];
 
         var series = [];
         [
             // ['станція АВДІЇВКА', BJData], ['станція АРОМАТНА', SHData], ['станція БЕРЕГОВА', GZData]].forEach(
-            ['100', SHData], ['10',  GZData]].forEach(
+            ['1', SHData], ['1',  GZData]].forEach(
             function (item, i) {
 
-                series.push({
+                series.push(
+                    {
                         name: item[0],
                         type: 'lines',
                         zlevel: 2,
                         effect: {
                             show: true,
-                            // period: 7,
-                            constantSpeed: +item[0],
-                            trailLength: 0.7,
-                            color: '#1D1194',
+                            period: 5,
+                            //constantSpeed: 50,
+                            // constantSpeed: +item[0],
+                            trailLength: 0.3,
+                            // color: {
+                            //     type: 'linear',
+                            //     x: 0,
+                            //     y: 0,
+                            //     x2: 0,
+                            //     y2: 1,
+                            //     colorStops: [{
+                            //         offset: 0, color: 'green' // color at 0% position
+                            //     }, {
+                            //         offset: 1, color: 'red' // color at 100% position
+                            //     }],
+                            //     global: false
+                            // },
+                            color: "#4A4453",
+                            // opacity: 1,
                             symbolSize: 3
                         },
                         lineStyle: {
                             normal: {
-                                color: color[i],
-                                width: 0,
-                                curveness: 0.3
+                                color: {
+                                    type: 'linear',
+                                    x: 0,
+                                    y: 0,
+                                    x2: 0,
+                                    y2: 1,
+                                    colorStops: [{
+                                        offset: 0, color: 'rgba(29, 17, 148, 1)' // color at 0% position
+                                    }, {
+                                        offset: 1, color: '#E78B8A' // color at 100% position
+                                    }],
+                                    global: false
+                                },
+                                // color: "#1D1194",
+                                width: 2,
+                                curveness: 0.4,
+                                opacity: 0.5
                             }
                         },
                         data: convertData(item[1])
                     },
-                    {
-                        name: item[0],
-                        type: 'lines',
-                        zlevel: 1,
-                        effect: {
-                            show: true,
-                            // period: 7,
-                            constantSpeed: +item[0],
-                            trailLength: 0,
-                            symbol: planePath,
-                            symbolSize: 5
-                        },
-                        lineStyle: {
-                            normal: {
-                                color: color[i],
-                                width: 1,
-                                opacity: 1,
-                                curveness: 0.3
-                            }
-                        },
-                        data: convertData(item[1])
-                    },
+                    // {
+                    //     name: item[0],
+                    //     type: 'lines',
+                    //     zlevel: 1,
+                    //     effect: {
+                    //         show: true,
+                    //         // period: 5,
+                    //         constantSpeed: 50,
+                    //         // constantSpeed: +item[0],
+                    //         trailLength: 0,
+                    //         symbol: planePath,
+                    //         symbolSize: 5
+                    //     },
+                    //     lineStyle: {
+                    //         normal: {
+                    //             color: {
+                    //                 type: 'linear',
+                    //                 x: 0,
+                    //                 y: 0,
+                    //                 x2: 0,
+                    //                 y2: 1,
+                    //                 colorStops: [{
+                    //                     offset: 0, color: 'rgba(29, 17, 148, 0.8)' // color at 0% position
+                    //                 }, {
+                    //                     offset: 1, color: 'rgba(29, 17, 148, 0.2)' // color at 100% position
+                    //                 }],
+                    //                 global: false
+                    //             },
+                    //             //color: "#1D1194",
+                    //             width: 3,
+                    //             opacity: 1,
+                    //             curveness: 0.4
+                    //         }
+                    //     },
+                    //     data: convertData(item[1])
+                    // },
                     {
                         name: item[0],
                         type: 'effectScatter',
                         coordinateSystem: 'geo',
                         zlevel: 2,
-                        rippleEffect: {
-                            brushType: 'stroke'
-                        },
+                        // rippleEffect: {
+                        //     brushType: 'circle'
+                        // },
                         label: {
                             normal: {
                                 show: true,
@@ -241,6 +278,8 @@ Promise.all([
             }
         ).addTo(label_layer);
     });
+
+    // setTimeout(function(){ map.removeLayer(e3Layer);}, 6200);
 
 
     d3.select("button").on("click", function(){

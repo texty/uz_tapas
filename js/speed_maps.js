@@ -56,21 +56,37 @@ Promise.all([
 
 
     //coal - map2
-    const coal_train_layer = new maptalks.VectorLayer('train').addTo(speed_coal);
-    const coal_wagon_layer = new maptalks.VectorLayer('wagon').addTo(speed_coal);
+    const coal_train_layer = new maptalks.VectorLayer('train', {
+        'opacity': 0.5
+    }).addTo(speed_coal);
+    const coal_wagon_layer = new maptalks.VectorLayer('wagon', {
+        'opacity': 0.5
+    }).addTo(speed_coal);
 
     //grain - map3
-    const grain_train_layer = new maptalks.VectorLayer('train').addTo(speed_grain);
-    const grain_wagon_layer = new maptalks.VectorLayer('wagon').addTo(speed_grain);
+    const grain_train_layer = new maptalks.VectorLayer('train', {
+        'opacity': 0.5
+    }).addTo(speed_grain);
+    const grain_wagon_layer = new maptalks.VectorLayer('wagon', {
+        'opacity': 0.5
+    }).addTo(speed_grain);
 
 
     //ore - map4
-    const ore_train_layer = new maptalks.VectorLayer('train').addTo(speed_ore);
-    const ore_wagon_layer = new maptalks.VectorLayer('wagon').addTo(speed_ore);
+    const ore_train_layer = new maptalks.VectorLayer('train', {
+        'opacity': 0.5
+    }).addTo(speed_ore);
+    const ore_wagon_layer = new maptalks.VectorLayer('wagon', {
+        'opacity': 0.5
+    }).addTo(speed_ore);
 
     //ore - map5
-    const stone_train_layer = new maptalks.VectorLayer('train').addTo(speed_stone);
-    const stone_wagon_layer = new maptalks.VectorLayer('wagon').addTo(speed_stone);
+    const stone_train_layer = new maptalks.VectorLayer('train', {
+        'opacity': 0.5
+    }).addTo(speed_stone);
+    const stone_wagon_layer = new maptalks.VectorLayer('wagon', {
+        'opacity': 0.5
+    }).addTo(speed_stone);
 
 
     function getSymbol(color) {
