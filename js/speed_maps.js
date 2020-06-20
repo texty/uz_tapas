@@ -102,20 +102,43 @@ Promise.all([
     }
 
 
-    var color = d3.scaleLinear()
-        .domain([0, 600])
-        .range(["#1D1194", "#E78B8A"]);
+
 
 
     function drawLayer(df, target_layer) {
+
+        //колір швидкості від мін до макс.
+
+        var color = d3.scaleLinear()
+            .domain([d3.min(df, function(d){ return +d.mdn_speed }), d3.max(df, function(d){ return +d.mdn_speed })])
+            .range(["#1D1194", "#E78B8A"]);
+
+
+        // максимальна к-ть вагонів для line width domain
+        var maxWag = d3.max(df, function(d){ return +d.no_wagons });
+
+        var scale = d3.scaleLinear()
+            .domain([0, maxWag])
+            .range([1, 8]);
+
+
+        /* середня к-ть вагонів для фільтру */
+        var meanWag = d3.mean(df, function(d){ return +d.no_wagons });
+        df = df.filter(function(d){ return d.no_wagons > meanWag });
+
+
+
         df.forEach(function (d) {
             d.lat_sender = +d.lat_sender;
             d.lon_sender = +d.lon_sender;
             d.lat_receiver = +d.lat_receiver;
             d.lon_receiver = +d.lon_receiver;
-            d.median_speed_km_day = +d.median_speed_km_day;
+            d.mdn_speed = +d.mdn_speed;
+            d.no_wagons = +d.no_wagons;
 
-            let speedColor = color(d.median_speed_km_day);
+
+            let speedColor = color(d.mdn_speed);
+            let lineWidth = scale(d.no_wagons)
 
             // blue circle
             var src = new maptalks.Marker(
@@ -126,8 +149,8 @@ Promise.all([
                         'markerFillOpacity': 0.8,
                         'markerLineColor': '#fff',
                         'markerLineWidth': 3,
-                        'markerWidth': 10,
-                        'markerHeight': 10
+                        'markerWidth': 0,
+                        'markerHeight': 0
                     }
                 }
             );
@@ -141,8 +164,8 @@ Promise.all([
                         'markerFillOpacity': 0.8,
                         'markerLineColor': '#fff',
                         'markerLineWidth': 3,
-                        'markerWidth': 10,
-                        'markerHeight': 10
+                        'markerWidth': 0,
+                        'markerHeight': 0
                     }
                 }
             );
@@ -152,6 +175,9 @@ Promise.all([
             var line = new maptalks.ArcConnectorLine(src, dst, {
                 arcDegree: 90,
                 showOn: 'always',
+                arrowStyle : 'classic', // we only have one arrow style now
+                //arrowPlacement : 'vertex-firstlast', //vertex-first, vertex-last, vertex-firstlast, point
+
                 symbol: {
                     // 'lineColor' : {
                     //     'type' : 'linear',
@@ -165,7 +191,7 @@ Promise.all([
                     // },
                     'lineColor': speedColor,
                     // lineWidth: d.no_wagons/4000,
-                    lineWidth: 2
+                    lineWidth: lineWidth
                 }
             });
 
@@ -198,8 +224,7 @@ Promise.all([
     d3.selectAll(".toggle_layer").on("click", function(){
         let layer_to_hide = d3.select(this).attr("hide");
         let layer_to_show = d3.select(this).attr("show");
-        console.log(layer_to_hide);
-        console.log(layer_to_show);
+
 
         eval(layer_to_show).show();
         eval(layer_to_hide).hide();
