@@ -4,15 +4,15 @@ var default_zoom = window.innerWidth > 800 ? 6.5 : 5.5;
 var map = new maptalks.Map('map', {
     center: [31, 49],
     zoom: default_zoom,
-    zoomControl: {
-        'position': 'top-left',
-        'slider': false,
-        'zoomLevel': false
-    },
+    // zoomControl: {
+    //     'position': 'top-left',
+    //     'slider': false,
+    //     'zoomLevel': false
+    // },
     baseLayer: new maptalks.TileLayer('base', {
         urlTemplate: '',
         subdomains: ['a', 'b', 'c', 'd'],
-        attribution: '&copy; <a href="http://osm.org">OpenStreetMap</a> contributors, &copy; <a href="https://mapbox.com/">mapbox</a>'
+        attribution: ''
     }),
     minZoom: 5,
     maxZoom: 10,

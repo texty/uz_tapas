@@ -12,11 +12,11 @@ var bigest_stations = new maptalks.Map('bigestst', {
         'urlTemplate' : '',
         'subdomains': ['a','b','c','d']
     }),
-    zoomControl: {
-        'position': 'top-left',
-        'slider': false,
-        'zoomLevel': false
-    },
+    // zoomControl: {
+    //     'position': 'top-left',
+    //     'slider': false,
+    //     'zoomLevel': false
+    // },
     layers : [
         new maptalks.VectorLayer('v')
     ],
@@ -97,24 +97,29 @@ Promise.all([
         // максимальна к-ть вагонів для line width domain
         var maxWag = d3.max(df, function(d){ return +d.no_wagons });
 
-        var scale = d3.scaleLinear()
+        var scaleRadius = d3.scaleLinear()
             .domain([0, maxWag])
             .range([5, 25]);
+
+        var scaleLineWidth = d3.scaleLinear()
+            .domain([0, maxWag])
+            .range([1, 4]);
 
 
 
         nested.forEach(function (d) {
 
-            let radius = scale(d.values[0].no_wagons);
+            let radius = scaleRadius(d.values[0].no_wagons);
+            let lineWidth = scaleLineWidth(d.values[0].no_wagons);
             // blue circle
             var src = new maptalks.Marker(
                 [d.values[0].lon_sender, d.values[0].lat_sender], {
                     symbol: {
                         'markerType': 'ellipse',
                         'markerFill': color(type),
-                        'markerFillOpacity': 0.5,
+                        'markerFillOpacity': 0.8,
                         'markerLineColor': "white",
-                        'markerLineWidth': 0.5,
+                        'markerLineWidth': 0.8,
                         'markerWidth': radius,
                         'markerHeight': radius
                     }
@@ -154,9 +159,11 @@ Promise.all([
                             arrowStyle : 'classic',
                             arrowPlacement: 'vertex-last', //vertex-first, vertex-last, vertex-firstlast, point
                             symbol: {
+                                'fillColor': color(type),
+                                'fillOpacity': 1,
                                 'lineColor': color(type),
-                                'lineWidth': 1,
-                                'lineOpacity': 0.5
+                                'lineWidth': lineWidth,
+                                'lineOpacity': 1
                             }
                         });
 
