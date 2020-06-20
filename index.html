@@ -12,10 +12,12 @@
     <script type="text/javascript" src="lib/d3v5.min.js"></script>
     <script type="text/javascript" src='lib/scrollama.min.js'></script>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maptalks@0.41.1/dist/maptalks.css"/>
+    <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maptalks@0.41.1/dist/maptalks.css"/>-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maptalks/dist/maptalks.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/maptalks/dist/maptalks.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
 
-    <script type="text/javascript" src="lib/maptalks.min.js"></script>
+    <!--<script type="text/javascript" src="lib/maptalks.min.js"></script>-->
     <!--<script type="text/javascript" src="lib/deck.gl.7.1.11.dist.min.js"></script>-->
     <!--<script src="https://cdn.jsdelivr.net/npm/deck.gl@7.1.11/dist.min.js"></script>-->
     <!--<script type="text/javascript" src="lib/maptalks-deckgllayer.js"></script>-->
@@ -35,8 +37,8 @@
       }
 
     .map-container {
-        width: 100%;
-        height: 100%;
+        /*width: 100%;*/
+        /*height: 100%;*/
     }
 
     .container {
@@ -96,6 +98,25 @@
     не лише для окремих «VIP-відправників» руди та зерна.</p>
 </section>
 
+<section class="map-container">
+    <h3 class="chart-title">Найбільші станції-відправники основних груп вантажів з вересня 2015 рр. по листопад 2019 рр.</h3>
+    <div class="buttons">
+        <div style="background-color: #000069;" show="stone_senders" class="button toggle_senders">Насипні будматеріали</div>
+        <div style="background-color: #FF9B97;" show="ore_senders" class="button toggle_senders">Металеві руди</div>
+        <div style="background-color: #FFD46D;" show="grain_senders" class="button toggle_senders">Зернові</div>
+        <div style="background-color: #000000;" show="coal_senders" class="button toggle_senders">Камʼяне вугілля</div>
+    </div>
+</section>
+<div id="bigestst" class="container"></div>
+
+
+
+
+
+
+
+
+
 
 
 <section class="map-container">
@@ -104,8 +125,9 @@
         <div hide="coal_wagon_layer" show="coal_train_layer" class="button toggle_layer">Маршрутна відправка</div>
         <div hide="coal_train_layer" show="coal_wagon_layer" class="button toggle_layer">Вагонна відправка</div>
     </div>
-    <div id="map2" class="container"></div>
+
 </section>
+<div id="map2" class="container"></div>
 
 <section style="width: 50%; margin: auto;">
     <p>Ми вирішили перевірити наскільки залежить швидкість руху вагонів
@@ -155,8 +177,9 @@
     <div hide="grain_wagon_layer" show="grain_train_layer" class="button toggle_layer">Маршрутна відправка</div>
     <div hide="grain_train_layer" show="grain_wagon_layer" class="button toggle_layer">Вагонна відправка</div>
 </div>
-<div id="map3" class="container"></div>
 </section>
+<div id="map3" class="container"></div>
+
 
 
 <section style="width: 50%; margin: auto;">
@@ -207,8 +230,10 @@
         <div hide="ore_wagon_layer" show="ore_train_layer" class="button toggle_layer">Маршрутна відправка</div>
         <div hide="ore_train_layer" show="ore_wagon_layer" class="button toggle_layer">Вагонна відправка</div>
     </div>
-    <div id="map4" class="container"></div>
 </section>
+
+<div id="map4" class="container"></div>
+
 
 <section style="width: 50%; margin: auto;">
     <p>Ми вирішили перевірити наскільки залежить швидкість руху вагонів
@@ -258,8 +283,10 @@
         <div hide="stone_wagon_layer" show="stone_train_layer" class="button toggle_layer">Маршрутна відправка</div>
         <div hide="stone_train_layer" show="stone_wagon_layer" class="button toggle_layer">Вагонна відправка</div>
     </div>
-    <div id="map5" class="container"></div>
 </section>
+
+<div id="map5" class="container"></div>
+
 
 
 
@@ -327,9 +354,10 @@
 
 <!--<script src="lib/underscore-min.js"></script>-->
 <!--<script src="lib/share-behavior.js"></script>-->
-<!--<script src="js/busiest_directions.js"></script>-->
-<script src="js/e3_try.js"></script>
+<script src="js/busiest_directions.js"></script>
+<!--<script src="js/e3_try.js"></script>-->
 <script src="js/speed_maps.js"></script>
+<script src="js/point_map.js"></script>
 
 
 

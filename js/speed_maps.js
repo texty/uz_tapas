@@ -3,18 +3,21 @@
  */
 const map_style = {
     center :  [31, 48],
-    zoom   :  6.5,
+    zoom   :  default_zoom,
     attributionControl : {
         'content' : '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/attributions">CARTO</a>'
     },
-    baseLayer : new maptalks.TileLayer('tile',{
+    baseLayer : new maptalks.TileLayer('base',{
         'urlTemplate' : '',
         'subdomains': ['a','b','c','d']
     }),
-    minZoom: 6,
-    maxZoom: 9,
-    // maxPitch: 0,
-    // pitch: 0,
+    layers : [
+        new maptalks.VectorLayer('v')
+    ],
+    minZoom: 5,
+    maxZoom: 10,
+    maxPitch: 0,
+    pitch: 0,
     scrollWheelZoom : false
 };
 
@@ -47,10 +50,10 @@ Promise.all([
 ]).then(function(data) {
 
     //add geojson with admin boundaries
-    new maptalks.VectorLayer('v', data[0]).setStyle({ 'symbol' : getSymbol('#FFFFDA') }).addTo(speed_coal);
-    new maptalks.VectorLayer('v', data[0]).setStyle({ 'symbol' : getSymbol('#FFFFDA') }).addTo(speed_grain);
-    new maptalks.VectorLayer('v', data[0]).setStyle({ 'symbol' : getSymbol('#FFFFDA') }).addTo(speed_ore);
-    new maptalks.VectorLayer('v', data[0]).setStyle({ 'symbol' : getSymbol('#FFFFDA') }).addTo(speed_stone);
+    new maptalks.VectorLayer('admin', data[0]).setStyle({ 'symbol' : getSymbol('#FFFFDA') }).addTo(speed_coal);
+    new maptalks.VectorLayer('admin', data[0]).setStyle({ 'symbol' : getSymbol('#FFFFDA') }).addTo(speed_grain);
+    new maptalks.VectorLayer('admin', data[0]).setStyle({ 'symbol' : getSymbol('#FFFFDA') }).addTo(speed_ore);
+    new maptalks.VectorLayer('admin', data[0]).setStyle({ 'symbol' : getSymbol('#FFFFDA') }).addTo(speed_stone);
 
 
 
@@ -93,17 +96,13 @@ Promise.all([
         return [
             {
                 'polygonFill': color,
-                'polygonOpacity': 1,
+                'polygonOpacity': 0,
                 'lineColor': 'silver',
                 'lineWidth': 1,
                 'lineOpacity': 0.7
             }
         ];
     }
-
-
-
-
 
     function drawLayer(df, target_layer) {
 
@@ -138,7 +137,7 @@ Promise.all([
 
 
             let speedColor = color(d.mdn_speed);
-            let lineWidth = scale(d.no_wagons)
+            let lineWidth = scale(d.no_wagons);
 
             // blue circle
             var src = new maptalks.Marker(
@@ -176,7 +175,7 @@ Promise.all([
                 arcDegree: 90,
                 showOn: 'always',
                 arrowStyle : 'classic', // we only have one arrow style now
-                //arrowPlacement : 'vertex-firstlast', //vertex-first, vertex-last, vertex-firstlast, point
+                arrowPlacement : 'vertex-last', //vertex-first, vertex-last, vertex-firstlast, point
 
                 symbol: {
                     // 'lineColor' : {
@@ -283,5 +282,8 @@ Promise.all([
     drawLabels(label_grain);
     drawLabels(label_ore);
     drawLabels(label_stone);
+
+
+
 
 });
