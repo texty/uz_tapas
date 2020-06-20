@@ -221,4 +221,14 @@ div.button {
 canvas {
   width: 100%; }
 
+#scatter {
+  margin-bottom: 100px; }
+  #scatter svg {
+    display: block;
+    margin: auto; }
+    #scatter svg g.tick line {
+      stroke: #1D1194; }
+    #scatter svg g.tick text {
+      fill: #1D1194; }
+
 /*# sourceMappingURL=styles.css.map */

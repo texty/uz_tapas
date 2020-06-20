@@ -44,3 +44,23 @@ div.button {
 canvas {
   width: 100%;
 }
+
+#scatter {
+  margin-bottom: 100px;
+  svg {
+    display: block;
+    margin: auto;
+
+    path.domain {
+      //display: none;
+    }
+
+    g.tick line {
+      stroke: #1D1194;
+    }
+
+    g.tick text {
+      fill: #1D1194;
+    }
+  }
+}
