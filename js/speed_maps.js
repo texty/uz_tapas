@@ -62,6 +62,7 @@ Promise.all([
     const coal_train_layer = new maptalks.VectorLayer('train', {
         'opacity': 0.5
     }).addTo(speed_coal);
+
     const coal_wagon_layer = new maptalks.VectorLayer('wagon', {
         'opacity': 0.5
     }).addTo(speed_coal);
@@ -108,9 +109,14 @@ Promise.all([
 
         //колір швидкості від мін до макс.
 
-        var color = d3.scaleLinear()
+        // var color = d3.scaleLinear()
+        //     .domain([d3.min(df, function(d){ return +d.mdn_speed }), d3.max(df, function(d){ return +d.mdn_speed })])
+        //     .range(["#1D1194", "#E78B8A"]);
+
+        var color = d3.scaleQuantize()
             .domain([d3.min(df, function(d){ return +d.mdn_speed }), d3.max(df, function(d){ return +d.mdn_speed })])
-            .range(["#1D1194", "#E78B8A"]);
+            .range(["#5E4FA2", "#3288BD", "#66C2A5", "#ABDDA4", "#E6F598",
+                "#FFFFBF", "#FEE08B", "#FDAE61", "#F46D43", "#D53E4F", "#9E0142"]);
 
 
         // максимальна к-ть вагонів для line width domain
@@ -121,9 +127,9 @@ Promise.all([
             .range([1, 8]);
 
 
-        /* середня к-ть вагонів для фільтру */
-        var meanWag = d3.mean(df, function(d){ return +d.no_wagons });
-        df = df.filter(function(d){ return d.no_wagons > meanWag });
+        // /* середня к-ть вагонів для фільтру */
+        // var meanWag = d3.mean(df, function(d){ return +d.no_wagons });
+        // df = df.filter(function(d){ return d.no_wagons > meanWag });
 
 
 
@@ -201,23 +207,23 @@ Promise.all([
     }
 
 
-    drawLayer(data[2], coal_train_layer);
-    drawLayer(data[3], coal_wagon_layer);
+    drawLayer(data[2].filter(function(d){ return d.no_wagons > 100}), coal_train_layer);
+    drawLayer(data[3].filter(function(d){ return d.no_wagons > 1000}), coal_wagon_layer);
     coal_wagon_layer.hide();
 
 
-    drawLayer(data[4], grain_train_layer);
-    drawLayer(data[5], grain_wagon_layer);
+    drawLayer(data[4].filter(function(d){ return d.no_wagons > 400}), grain_train_layer);
+    drawLayer(data[5].filter(function(d){ return d.no_wagons > 1000}), grain_wagon_layer);
     grain_wagon_layer.hide();
 
 
-    drawLayer(data[6], ore_train_layer);
-    drawLayer(data[7], ore_wagon_layer);
+    drawLayer(data[6].filter(function(d){ return d.no_wagons > 400}), ore_train_layer);
+    drawLayer(data[7].filter(function(d){ return d.no_wagons > 1000}), ore_wagon_layer);
     ore_wagon_layer.hide();
 
 
-    drawLayer(data[8], stone_train_layer);
-    drawLayer(data[9], stone_wagon_layer);
+    drawLayer(data[8].filter(function(d){ return d.no_wagons > 100}), stone_train_layer);
+    drawLayer(data[9].filter(function(d){ return d.no_wagons > 1000}), stone_wagon_layer);
     stone_wagon_layer.hide();
 
     d3.selectAll(".toggle_layer").on("click", function(){
