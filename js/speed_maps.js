@@ -2,7 +2,7 @@
  * Created by yevheniia on 15.06.20.
  */
 const map_style = {
-    center :  [31, 48],
+    center :  [32, 48.5],
     zoom   :  default_zoom,
     attributionControl : {
         'content' : '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/attributions">CARTO</a>'
@@ -14,6 +14,11 @@ const map_style = {
     layers : [
         new maptalks.VectorLayer('v')
     ],
+    zoomControl: {
+        'position': 'top-left',
+        'slider': false,
+        'zoomLevel': false
+    },
     minZoom: 5,
     maxZoom: 10,
     maxPitch: 0,
@@ -21,6 +26,7 @@ const map_style = {
     scrollWheelZoom : false
 };
 
+var backgroundColor = "#E6EBE6";
 
 
 var speed_coal = new maptalks.Map('map2', map_style);
@@ -50,10 +56,10 @@ Promise.all([
 ]).then(function(data) {
 
     //add geojson with admin boundaries
-    new maptalks.VectorLayer('admin', data[0]).setStyle({ 'symbol' : getSymbol('#FFFFDA') }).addTo(speed_coal);
-    new maptalks.VectorLayer('admin', data[0]).setStyle({ 'symbol' : getSymbol('#FFFFDA') }).addTo(speed_grain);
-    new maptalks.VectorLayer('admin', data[0]).setStyle({ 'symbol' : getSymbol('#FFFFDA') }).addTo(speed_ore);
-    new maptalks.VectorLayer('admin', data[0]).setStyle({ 'symbol' : getSymbol('#FFFFDA') }).addTo(speed_stone);
+    new maptalks.VectorLayer('admin', data[0]).setStyle({ 'symbol' : getSymbol(backgroundColor) }).addTo(speed_coal);
+    new maptalks.VectorLayer('admin', data[0]).setStyle({ 'symbol' : getSymbol(backgroundColor) }).addTo(speed_grain);
+    new maptalks.VectorLayer('admin', data[0]).setStyle({ 'symbol' : getSymbol(backgroundColor) }).addTo(speed_ore);
+    new maptalks.VectorLayer('admin', data[0]).setStyle({ 'symbol' : getSymbol(backgroundColor) }).addTo(speed_stone);
 
 
 
@@ -115,8 +121,7 @@ Promise.all([
 
         var color = d3.scaleQuantize()
             .domain([d3.min(df, function(d){ return +d.mdn_speed }), d3.max(df, function(d){ return +d.mdn_speed })])
-            .range(["#5E4FA2", "#3288BD", "#66C2A5", "#ABDDA4", "#E6F598",
-                "#FFFFBF", "#FEE08B", "#FDAE61", "#F46D43", "#D53E4F", "#9E0142"]);
+            .range(["#007EFF", "#007EFF4D", "#AA2B8E4D", "#AA2B8E"]);
 
 
         // максимальна к-ть вагонів для line width domain
@@ -229,6 +234,8 @@ Promise.all([
     d3.selectAll(".toggle_layer").on("click", function(){
         let layer_to_hide = d3.select(this).attr("hide");
         let layer_to_show = d3.select(this).attr("show");
+        d3.select(this.parentNode).selectAll(".speed-map-button").classed("active", false);
+        d3.select(this).classed("active", true);
 
 
         eval(layer_to_show).show();
@@ -266,7 +273,7 @@ Promise.all([
                         'textFont': null, //same as CanvasRenderingContext2D.font, override textName, textWeight and textStyle
                         'textFill': '#34495e',
                         'textOpacity': 1,
-                        'textHaloFill': '#FFFFDA',
+                        'textHaloFill': backgroundColor,
                         'textHaloRadius': 5,
                         'textWrapWidth': null,
                         'textWrapCharacter': '\n',

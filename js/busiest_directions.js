@@ -4,11 +4,11 @@ var default_zoom = window.innerWidth > 800 ? 6.5 : 5.5;
 var map = new maptalks.Map('map', {
     center: [31, 49],
     zoom: default_zoom,
-    // zoomControl: {
-    //     'position': 'top-left',
-    //     'slider': false,
-    //     'zoomLevel': false
-    // },
+    zoomControl: {
+        'position': 'top-left',
+        'slider': false,
+        'zoomLevel': false
+    },
     baseLayer: new maptalks.TileLayer('base', {
         urlTemplate: '',
         subdomains: ['a', 'b', 'c', 'd'],
@@ -30,7 +30,7 @@ Promise.all([
     d3.json("data/UKR_adm1.json")
 ]).then(function(data) {
 
-    new maptalks.VectorLayer('v', data[2]).setStyle({ 'symbol' : getSymbol('#FFFFDA') }).addTo(map);
+    new maptalks.VectorLayer('v', data[2]).setStyle({ 'symbol' : getSymbol('#E6EBE6') }).addTo(map);
 
     function getSymbol(color) {
         return [
@@ -61,7 +61,7 @@ Promise.all([
             [d.lon_sender, d.lat_sender], {
                 symbol: {
                     'markerType': 'ellipse',
-                    'markerFill': '#1D1194',
+                    'markerFill': '#5B5AFF',
                     'markerFillOpacity': 0.7,
                     'markerLineColor': '#fff',
                     'markerLineWidth': 3,
@@ -76,7 +76,7 @@ Promise.all([
             [d.lon_receiver, d.lat_receiver], {
                 'symbol': {
                     'markerType': 'ellipse',
-                    'markerFill': '#E78B8A',
+                    'markerFill': '#FF3800',
                     'markerFillOpacity': 0.8,
                     'markerLineColor': '#fff',
                     'markerLineWidth': 3,
@@ -95,11 +95,11 @@ Promise.all([
                 'lineColor' : {
                     'type' : 'linear',
                     'colorStops' : [
-                        [0.00, 'rgba(29, 17, 148, 0.5)'],
-                        [0.5, 'rgba(29, 17, 148, 0.1)'],
+                        [0.00, '#FF3800'],
+                        [0.5, '#FF380033'],
                         // [2 / 4, 'green'],
                         // [3 / 4, 'aqua'],
-                        [1.00, 'rgba(29, 17, 148, 0)']
+                        [1.00, '#FF380005']
                     ]
                 },
                 lineWidth: d.no_wagons/4000
@@ -133,7 +133,7 @@ Promise.all([
                     'textFont': null, //same as CanvasRenderingContext2D.font, override textName, textWeight and textStyle
                     'textFill': '#34495e',
                     'textOpacity': 1,
-                    'textHaloFill': '#FFFFDA',
+                    'textHaloFill': '#E6EBE6',
                     'textHaloRadius': 3,
                     'textWrapWidth': null,
                     'textWrapCharacter': '\n',

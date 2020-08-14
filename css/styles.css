@@ -1,93 +1,28 @@
 @charset "UTF-8";
 @font-face {
-  font-family: 'ProximaNova';
-  src: url("../font/proxima_regular/proxima-nova-regular.eot");
-  src: url("../font/proxima_regular/proxima-nova-regular.eot?#iefix") format("embedded-opentype"), url("../font/proxima_regular/proxima-nova-regular.woff2") format("woff2"), url("../font/proxima_regular/proxima-nova-regular.woff") format("woff"), url("../font/proxima_regular/proxima-nova-regular.ttf") format("truetype"), url("../font/proxima_regular/proxima-nova-regular.svg#youworkforthem") format("svg");
-  font-weight: 400;
-  font-style: normal; }
+  font-family: 'e-Ukraine-Regular';
+  src: url("../font/e-Ukraine-Regular.eot"), url("../font/e-Ukraine-Regular.eot?#iefix") format("embedded-opentype"), url("../font/e-Ukraine-Regular.woff2") format("woff2"), url("../font/e-Ukraine-Regular.woff") format("woff"), url("../font/e-Ukraine-Regular.ttf") format("truetype");
+  font-weight: normal; }
 @font-face {
-  font-family: 'ProximaNova';
-  src: url("../font/proxima_bold/proxima-nova-bold.eot");
-  src: url("../font/proxima_bold/proxima-nova-bold.eot?#iefix") format("embedded-opentype"), url("../font/proxima_bold/proxima-nova-bold.woff2") format("woff2"), url("../font/proxima_bold/proxima-nova-bold.woff") format("woff"), url("../font/proxima_bold/proxima-nova-bold.ttf") format("truetype"), url("../font/proxima_bold/proxima-nova-bold.svg#youworkforthem") format("svg");
-  font-weight: 600;
-  font-style: normal; }
+  font-family: 'e-Ukraine-Medium';
+  src: url("../font/e-Ukraine-Medium.eot"), url("../font/e-Ukraine-Medium.eot?#iefix") format("embedded-opentype"), url("../font/e-Ukraine-Medium.woff2") format("woff2"), url("../font/e-Ukraine-Medium.woff") format("woff"), url("../font/e-Ukraine-Medium.ttf") format("truetype");
+  font-weight: 500; }
 @font-face {
-  font-family: 'ProximaNova';
-  src: url("../font/proxima_regular/proxima-nova-regular.eot");
-  src: url("../font/proxima_regular/proxima-nova-regular.eot?#iefix") format("embedded-opentype"), url("../font/proxima_regular/proxima-nova-regular.woff2") format("woff2"), url("../font/proxima_regular/proxima-nova-regular.woff") format("woff"), url("../font/proxima_regular/proxima-nova-regular.ttf") format("truetype"), url("../font/proxima_regular/proxima-nova-regular.svg#youworkforthem") format("svg");
-  font-weight: 400;
-  font-style: normal; }
+  font-family: 'e-Ukraine-Light';
+  src: url("../font/e-Ukraine-Light.eot"), url("../font/e-Ukraine-Light.eot?#iefix") format("embedded-opentype"), url("../font/e-Ukraine-Light.woff2") format("woff2"), url("../font/e-Ukraine-Light.woff") format("woff"), url("../font/e-Ukraine-Light.ttf") format("truetype");
+  font-weight: 300; }
 @font-face {
-  font-family: 'ProximaNova';
-  src: url("../font/proxima_bold/proxima-nova-bold.eot");
-  src: url("../font/proxima_bold/proxima-nova-bold.eot?#iefix") format("embedded-opentype"), url("../font/proxima_bold/proxima-nova-bold.woff2") format("woff2"), url("../font/proxima_bold/proxima-nova-bold.woff") format("woff"), url("../font/proxima_bold/proxima-nova-bold.ttf") format("truetype"), url("../font/proxima_bold/proxima-nova-bold.svg#youworkforthem") format("svg");
-  font-weight: 600;
-  font-style: normal; }
-header {
-  height: 40px;
-  width: 100%;
-  background-color: white;
-  display: flex;
-  display: grid;
-  grid-template-columns: [start] 2fr [logo-start] 15fr [rubrics-start] 43fr [rubrics-end] 1fr [search-start] 12fr [search-end] 1fr [end];
-  align-items: center;
-  z-index: 10; }
-  header .rubrics-container {
-    cursor: pointer;
-    grid-column: rubrics-start/rubrics-end;
-    display: grid;
-    grid-template-columns: [start principals] 15fr [infographis] 16fr [burger] 12fr;
-    align-items: center; }
-    @media (max-width: 800px) {
-      header .rubrics-container {
-        display: block;
-        grid-column: 2/3;
-        grid-row: 1/2;
-        padding: 0 20px; } }
-    header .rubrics-container .rubric {
-      text-transform: uppercase;
-      letter-spacing: 0.5px; }
-      header .rubrics-container .rubric a {
-        text-decoration: none;
-        color: #333; }
-    header .rubrics-container .r1 {
-      grid-column: principals; }
-    header .rubrics-container .r2 {
-      grid-column-start: infographis; }
-    header .rubrics-container .r3 {
-      grid-column-start: burger; }
-    @media (max-width: 800px) {
-      header .rubrics-container .r1, header .rubrics-container .r2, header .rubrics-container .r3 {
-        display: none; } }
-  header .texty-logo {
-    grid-column-start: logo-start;
-    width: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: center; }
-    @media (max-width: 800px) {
-      header .texty-logo {
-        grid-column: 1/2;
-        justify-content: center;
-        margin-left: 1em; } }
-    header .texty-logo img {
-      min-width: 150px;
-      max-width: 100%;
-      max-height: 20px;
-      object-fit: contain; }
-
+  font-family: 'e-Ukraine-Regular';
+  src: url("../font/e-Ukraine-Regular.eot"), url("../font/e-Ukraine-Regular.eot?#iefix") format("embedded-opentype"), url("../font/e-Ukraine-Regular.woff2") format("woff2"), url("../font/e-Ukraine-Regular.woff") format("woff"), url("../font/e-Ukraine-Regular.ttf") format("truetype");
+  font-weight: normal; }
 @font-face {
-  font-family: 'ProximaNova';
-  src: url("../font/proxima_regular/proxima-nova-regular.eot");
-  src: url("../font/proxima_regular/proxima-nova-regular.eot?#iefix") format("embedded-opentype"), url("../font/proxima_regular/proxima-nova-regular.woff2") format("woff2"), url("../font/proxima_regular/proxima-nova-regular.woff") format("woff"), url("../font/proxima_regular/proxima-nova-regular.ttf") format("truetype"), url("../font/proxima_regular/proxima-nova-regular.svg#youworkforthem") format("svg");
-  font-weight: 400;
-  font-style: normal; }
+  font-family: 'e-Ukraine-Medium';
+  src: url("../font/e-Ukraine-Medium.eot"), url("../font/e-Ukraine-Medium.eot?#iefix") format("embedded-opentype"), url("../font/e-Ukraine-Medium.woff2") format("woff2"), url("../font/e-Ukraine-Medium.woff") format("woff"), url("../font/e-Ukraine-Medium.ttf") format("truetype");
+  font-weight: 500; }
 @font-face {
-  font-family: 'ProximaNova';
-  src: url("../font/proxima_bold/proxima-nova-bold.eot");
-  src: url("../font/proxima_bold/proxima-nova-bold.eot?#iefix") format("embedded-opentype"), url("../font/proxima_bold/proxima-nova-bold.woff2") format("woff2"), url("../font/proxima_bold/proxima-nova-bold.woff") format("woff"), url("../font/proxima_bold/proxima-nova-bold.ttf") format("truetype"), url("../font/proxima_bold/proxima-nova-bold.svg#youworkforthem") format("svg");
-  font-weight: 600;
-  font-style: normal; }
+  font-family: 'e-Ukraine-Light';
+  src: url("../font/e-Ukraine-Light.eot"), url("../font/e-Ukraine-Light.eot?#iefix") format("embedded-opentype"), url("../font/e-Ukraine-Light.woff2") format("woff2"), url("../font/e-Ukraine-Light.woff") format("woff"), url("../font/e-Ukraine-Light.ttf") format("truetype");
+  font-weight: 300; }
 footer {
   background-color: #333;
   color: white;
@@ -155,17 +90,17 @@ footer {
     margin-right: 10px; }
 
 @font-face {
-  font-family: 'ProximaNova';
-  src: url("../font/proxima_regular/proxima-nova-regular.eot");
-  src: url("../font/proxima_regular/proxima-nova-regular.eot?#iefix") format("embedded-opentype"), url("../font/proxima_regular/proxima-nova-regular.woff2") format("woff2"), url("../font/proxima_regular/proxima-nova-regular.woff") format("woff"), url("../font/proxima_regular/proxima-nova-regular.ttf") format("truetype"), url("../font/proxima_regular/proxima-nova-regular.svg#youworkforthem") format("svg");
-  font-weight: 400;
-  font-style: normal; }
+  font-family: 'e-Ukraine-Regular';
+  src: url("../font/e-Ukraine-Regular.eot"), url("../font/e-Ukraine-Regular.eot?#iefix") format("embedded-opentype"), url("../font/e-Ukraine-Regular.woff2") format("woff2"), url("../font/e-Ukraine-Regular.woff") format("woff"), url("../font/e-Ukraine-Regular.ttf") format("truetype");
+  font-weight: normal; }
 @font-face {
-  font-family: 'ProximaNova';
-  src: url("../font/proxima_bold/proxima-nova-bold.eot");
-  src: url("../font/proxima_bold/proxima-nova-bold.eot?#iefix") format("embedded-opentype"), url("../font/proxima_bold/proxima-nova-bold.woff2") format("woff2"), url("../font/proxima_bold/proxima-nova-bold.woff") format("woff"), url("../font/proxima_bold/proxima-nova-bold.ttf") format("truetype"), url("../font/proxima_bold/proxima-nova-bold.svg#youworkforthem") format("svg");
-  font-weight: 600;
-  font-style: normal; }
+  font-family: 'e-Ukraine-Medium';
+  src: url("../font/e-Ukraine-Medium.eot"), url("../font/e-Ukraine-Medium.eot?#iefix") format("embedded-opentype"), url("../font/e-Ukraine-Medium.woff2") format("woff2"), url("../font/e-Ukraine-Medium.woff") format("woff"), url("../font/e-Ukraine-Medium.ttf") format("truetype");
+  font-weight: 500; }
+@font-face {
+  font-family: 'e-Ukraine-Light';
+  src: url("../font/e-Ukraine-Light.eot"), url("../font/e-Ukraine-Light.eot?#iefix") format("embedded-opentype"), url("../font/e-Ukraine-Light.woff2") format("woff2"), url("../font/e-Ukraine-Light.woff") format("woff"), url("../font/e-Ukraine-Light.ttf") format("truetype");
+  font-weight: 300; }
 .donate-us {
   margin: 80px auto 30px auto; }
   .donate-us hr {
@@ -190,45 +125,398 @@ footer {
     color: #ed6746;
     border-bottom: 0; }
 
+@font-face {
+  font-family: 'e-Ukraine-Regular';
+  src: url("../font/e-Ukraine-Regular.eot"), url("../font/e-Ukraine-Regular.eot?#iefix") format("embedded-opentype"), url("../font/e-Ukraine-Regular.woff2") format("woff2"), url("../font/e-Ukraine-Regular.woff") format("woff"), url("../font/e-Ukraine-Regular.ttf") format("truetype");
+  font-weight: normal; }
+@font-face {
+  font-family: 'e-Ukraine-Medium';
+  src: url("../font/e-Ukraine-Medium.eot"), url("../font/e-Ukraine-Medium.eot?#iefix") format("embedded-opentype"), url("../font/e-Ukraine-Medium.woff2") format("woff2"), url("../font/e-Ukraine-Medium.woff") format("woff"), url("../font/e-Ukraine-Medium.ttf") format("truetype");
+  font-weight: 500; }
+@font-face {
+  font-family: 'e-Ukraine-Light';
+  src: url("../font/e-Ukraine-Light.eot"), url("../font/e-Ukraine-Light.eot?#iefix") format("embedded-opentype"), url("../font/e-Ukraine-Light.woff2") format("woff2"), url("../font/e-Ukraine-Light.woff") format("woff"), url("../font/e-Ukraine-Light.ttf") format("truetype");
+  font-weight: 300; }
 body {
-  height: 100%;
+  font-family: 'e-Ukraine-Regular', sans-serif;
   margin: 0;
-  font-family: 'ProximaNova', sans-serif;
-  background-color: #FFFFDA;
-  font-size: 20px;
-  line-height: 1.6; }
+  padding: 0; }
 
-.chart-title {
-  text-align: center;
-  width: 60%;
-  margin: 100px auto 50px auto;
-  color: #1D1194;
-  font-size: 30px; }
+/*-----------------------------------
+--------------- header --------------
+-------------------------------------*/
+header {
+  position: relative;
+  background-color: #FFF7E3;
+  width: 100%;
+  margin: auto; }
+  header .content {
+    max-width: 1680px;
+    position: relative;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr); }
+    @media (min-width: 1680px) {
+      header .content {
+        width: 1408px; } }
+    @media (min-width: 1280px) and (max-width: 1679px) {
+      header .content {
+        width: 1120px; } }
+    @media (min-width: 992px) and (max-width: 1279px) {
+      header .content {
+        width: 864px; } }
+    @media (max-width: 991px) and (min-width: 480px) {
+      header .content {
+        width: 448px;
+        display: block; } }
+    @media (max-width: 479px) {
+      header .content {
+        width: 100%;
+        display: block; } }
+    header .content .image-container {
+      width: 100%;
+      grid-column: 6/13;
+      grid-row: 1/2; }
+      header .content .image-container img {
+        width: 100%; }
+        @media (max-width: 991px) {
+          header .content .image-container img {
+            margin-top: -15vh; } }
+  header h1 {
+    width: 80%;
+    font-family: 'e-Ukraine-Regular', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 56px;
+    line-height: 60px;
+    letter-spacing: -0.02em; }
+    @media (max-width: 1280px) and (min-width: 992px) {
+      header h1 {
+        width: 80%;
+        font-size: calc(30px + 1vw);
+        line-height: calc(40px + 1vw); } }
+    @media (max-width: 991px) {
+      header h1 {
+        width: 100%;
+        margin: auto;
+        font-size: 32px;
+        line-height: 38px; } }
+    @media (max-width: 479px) {
+      header h1 {
+        width: 90%;
+        margin: auto; } }
+  header h2 {
+    width: 80%;
+    font-family: 'e-Ukraine-Regular', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 38px;
+    line-height: 40px;
+    letter-spacing: -0.02em; }
+    @media (max-width: 1120px) {
+      header h2 {
+        width: 80%;
+        font-size: calc(22px + 1vw);
+        line-height: calc(24px + 2vw); } }
+  header .title-wrapper {
+    display: flex;
+    grid-column: 1/6;
+    grid-row: 1/2; }
+    header .title-wrapper .title {
+      margin: 20px auto auto auto; }
+      @media (max-width: 991px) {
+        header .title-wrapper .title {
+          margin: 50px auto; } }
+  header .logo-wrapper {
+    grid-column: 1/-1;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    grid-row: 2/3;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.7); }
+    @media (max-width: 991px) {
+      header .logo-wrapper {
+        position: relative;
+        height: max-content; } }
+    header .logo-wrapper .logo-list {
+      grid-column: 1/-1;
+      margin: 0 auto;
+      padding: 5px 0;
+      width: 100%;
+      height: max-content;
+      display: flex;
+      justify-content: space-around;
+      align-items: center; }
+      @media (max-width: 991px) {
+        header .logo-wrapper .logo-list {
+          justify-content: flex-start;
+          flex-wrap: wrap;
+          margin: auto; } }
+      @media (max-width: 479px) {
+        header .logo-wrapper .logo-list {
+          width: 90%;
+          margin: auto; } }
+      header .logo-wrapper .logo-list img {
+        height: 60%;
+        margin: 0 1em 0 0;
+        display: block;
+        width: auto; }
+        @media (max-width: 991px) {
+          header .logo-wrapper .logo-list img {
+            margin: 0.5em; } }
+      header .logo-wrapper .logo-list #cyfra, header .logo-wrapper .logo-list #usaid, header .logo-wrapper .logo-list #eurasia {
+        max-height: 40px;
+        height: calc(20px + 2vw); }
+        @media (max-width: 991px) {
+          header .logo-wrapper .logo-list #cyfra, header .logo-wrapper .logo-list #usaid, header .logo-wrapper .logo-list #eurasia {
+            height: calc(30px + 2vw); } }
+      header .logo-wrapper .logo-list #ukaid {
+        max-height: 50px;
+        height: calc(30px + 2vw); }
+        @media (max-width: 991px) {
+          header .logo-wrapper .logo-list #ukaid {
+            height: calc(45px + 2vw); } }
+      header .logo-wrapper .logo-list #texty {
+        max-height: 20px; }
 
-div.buttons {
+/*----------------------------------------
+----------- all text containers -----------
+------------------------------------------*/
+.text {
+  margin: 50px auto;
+  width: calc(100% - 100px);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; }
+  @media (min-width: 1680px) {
+    .text {
+      width: 1408px; } }
+  @media (min-width: 1280px) and (max-width: 1679px) {
+    .text {
+      max-width: 1120px; } }
+  @media (min-width: 992px) and (max-width: 1279px) {
+    .text {
+      width: 864px; } }
+  @media (max-width: 991px) and (min-width: 480px) {
+    .text {
+      width: 448px;
+      display: block; } }
+  @media (max-width: 479px) {
+    .text {
+      width: 90%;
+      margin: 0 auto;
+      display: block; } }
+  .text h2 {
+    font-style: normal;
+    font-weight: normal;
+    grid-column: 1/3;
+    font-size: 38px;
+    line-height: 40px; }
+  .text p {
+    margin: 10px 0;
+    grid-column: 1/3;
+    font-family: 'e-Ukraine-Regular', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 24px; }
+
+.small {
+  font-family: 'e-Ukraine-Light', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px !important;
+  line-height: 1.6  !important;
+  margin: 0 0 20px 0; }
+
+.grey {
+  color: grey; }
+
+/*--------------------------------------
+---------- subtitles top gap  ---------
+-------------------------------------*/
+.chapter {
+  margin-top: 100px !important; }
+
+/*--------------------------------------
+--------------- info-numbers -----------
+-------------------------------------*/
+.attention {
+  margin: 20px 0;
+  padding: 50px 5%;
+  width: 80%;
+  background-color: #FFF7E3; }
+  .attention text {
+    font-size: calc(40px + 3vw); }
+    @media (max-width: 1000px) {
+      .attention text {
+        font-size: calc(40px + 2vw); } }
+
+/*-----------------------------------
+--------------- slider --------------
+-------------------------------------*/
+.slider-container {
+  font-family: 'e-Ukraine-Regular', sans-serif;
+  margin: 50px auto;
+  width: calc(100% - 2em);
+  padding: 1em;
+  max-width: 1680px;
+  overflow-x: hidden; }
+  @media (min-width: 1680px) {
+    .slider-container {
+      width: 1408px; } }
+  @media (min-width: 1280px) and (max-width: 1679px) {
+    .slider-container {
+      width: 1120px; } }
+  @media (min-width: 992px) and (max-width: 1279px) {
+    .slider-container {
+      width: 864px; } }
+  @media (min-width: 991px) {
+    .slider-container {
+      max-width: 100%; } }
+
+.slider-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; }
+
+.slider-wrapper {
+  max-width: 850px;
+  width: 90%;
+  overflow-x: hidden; }
+
+.slider {
+  display: flex;
   width: max-content;
-  margin: auto;
-  display: flex; }
+  transition: margin-left 1s; }
+  .slider .slider-item {
+    width: 250px;
+    margin-right: 50px; }
+    .slider .slider-item img {
+      width: 100%; }
+
+h3 {
+  font-family: 'e-Ukraine-Regular', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 28px;
+  line-height: 32px;
+  color: #000000; }
+
+h4 {
+  font-family: 'e-Ukraine-Regular', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 28px;
+  color: #000000; }
+
+/*-----------------------------------
+-------- maps' toggle buttons -------
+-------------------------------------*/
+div.switchMap-buttons {
+  width: 80%;
+  margin: 50px auto 20px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; }
+  @media (min-width: 1680px) {
+    div.switchMap-buttons {
+      grid-column: 1/3; } }
+  @media (min-width: 1280px) and (max-width: 1679px) {
+    div.switchMap-buttons {
+      grid-column: 1/3; } }
+  @media (min-width: 992px) and (max-width: 1279px) {
+    div.switchMap-buttons {
+      grid-column: 1/4; } }
+  @media (max-width: 991px) {
+    div.switchMap-buttons {
+      display: block;
+      grid-column: 1/-1; } }
+  div.switchMap-buttons .switchMap-button {
+    margin: 5px 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center; }
 
 div.button {
+  grid-column: span 1;
   cursor: pointer;
   width: max-content;
   padding: 5px;
-  background: #1D1194;
   margin-right: 20px;
-  color: #FFFFDA; }
+  color: #000; }
+
+input[type="radio"] {
+  margin-right: 0; }
+
+.speed-map-buttons-container {
+  grid-column: 1/4;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center; }
+  @media (max-width: 480px) {
+    .speed-map-buttons-container {
+      display: block; } }
+
+.active {
+  border-bottom: 1px solid black; }
+
+/*-----------------------------------
+--------------- maps --------------
+-------------------------------------*/
+.container {
+  width: 100%;
+  height: 90%;
+  margin: auto; }
+  @media (max-width: 991px) {
+    .container {
+      height: 50%; } }
+
+.maptalks-zoom-slider a.maptalks-zoom-zoomin, .maptalks-zoom-slider a.maptalks-zoom-zoomout {
+  display: block;
+  font-size: 24px  !important;
+  padding-top: 5px;
+  width: 30px  !important;
+  height: 25px  !important;
+  border: 1px solid #363539;
+  background: #E6EBE6 !important;
+  color: #000 !important;
+  line-height: 19px;
+  text-decoration: none;
+  margin: 5px;
+  border-radius: 4px; }
 
 canvas {
   width: 100%; }
 
-#scatter {
-  margin-bottom: 100px; }
-  #scatter svg {
-    display: block;
-    margin: auto; }
-    #scatter svg g.tick line {
-      stroke: #1D1194; }
-    #scatter svg g.tick text {
-      fill: #1D1194; }
+/*-----------------------------------
+---------- scatterplot --------------
+-------------------------------------*/
+#scatter p {
+  grid-column: 1/-1;
+  font-family: 'e-Ukraine-Light', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px !important;
+  margin-left: 60px; }
+#scatter svg {
+  display: block;
+  margin: auto; }
+  #scatter svg text.axis-labels {
+    font-family: 'e-Ukraine-Light', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px !important; }
+  #scatter svg path.domain {
+    display: none; }
+  #scatter svg g.tick line {
+    stroke: #CCCCCC; }
+  #scatter svg g.tick text {
+    font-family: 'e-Ukraine-Light', sans-serif;
+    fill: #000; }
 
 /*# sourceMappingURL=styles.css.map */

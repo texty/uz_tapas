@@ -3,7 +3,7 @@
  */
 
 var bigest_stations = new maptalks.Map('bigestst', {
-    center :  [31, 48],
+    center :  [32, 48.5],
     zoom   :  default_zoom,
     attributionControl : {
         'content' : '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/attributions">CARTO</a>'
@@ -12,11 +12,11 @@ var bigest_stations = new maptalks.Map('bigestst', {
         'urlTemplate' : '',
         'subdomains': ['a','b','c','d']
     }),
-    // zoomControl: {
-    //     'position': 'top-left',
-    //     'slider': false,
-    //     'zoomLevel': false
-    // },
+    zoomControl: {
+        'position': 'top-left',
+        'slider': false,
+        'zoomLevel': false
+    },
     layers : [
         new maptalks.VectorLayer('v')
     ],
@@ -42,7 +42,7 @@ Promise.all([
 
 ]).then(function(data) {
 
-    new maptalks.VectorLayer('admin', data[0]).setStyle({ 'symbol' : getSymbol('#FFFFDA') }).addTo(bigest_stations);
+    new maptalks.VectorLayer('admin', data[0]).setStyle({ 'symbol' : getSymbol('#E6EBE6') }).addTo(bigest_stations);
 
     //coal - map2
     const coal_senders = new maptalks.VectorLayer('coal').addTo(bigest_stations);
@@ -91,7 +91,7 @@ Promise.all([
         //колір швидкості від мін до макс.
         var color = d3.scaleOrdinal()
             .domain(["coal", "grain", "ore", "stone"])
-            .range(["#000000", "orange", "#FF9B97", "#000069"]);
+            .range(["#000000", "#15CF74", "#FF3A44", "#FFD600"]);
 
 
         // максимальна к-ть вагонів для line width domain
@@ -162,7 +162,8 @@ Promise.all([
                                 'fillColor': color(type),
                                 'fillOpacity': 1,
                                 'lineColor': color(type),
-                                'lineWidth': lineWidth,
+                                'lineWidth': 1,
+                                //'lineWidth': lineWidth,
                                 'lineOpacity': 1
                             }
                         });
@@ -193,17 +194,31 @@ Promise.all([
     drawLayer(data[5], stone_senders, "stone");
 
 
-    d3.selectAll(".toggle_senders").on("click", function(){
+    d3.selectAll('input[name="toggle_senders"]').on("change", function(){
         linesLayer.forEach(function(l){
             l.remove();
         });
-        let layer_to_show = d3.select(this).attr("show");
+         let layer_to_show = d3.select('input[name="toggle_senders"]:checked').node().value
         coal_senders.hide();
         grain_senders.hide();
         ore_senders.hide();
         stone_senders.hide();
         eval(layer_to_show).show();
+
     });
+
+
+    // d3.selectAll(".toggle_senders").on("click", function(){
+    //     linesLayer.forEach(function(l){
+    //         l.remove();
+    //     });
+    //     let layer_to_show = d3.select(this).attr("show");
+    //     coal_senders.hide();
+    //     grain_senders.hide();
+    //     ore_senders.hide();
+    //     stone_senders.hide();
+    //     eval(layer_to_show).show();
+    // });
 
 
 
@@ -231,7 +246,7 @@ Promise.all([
                         'textFont': null, //same as CanvasRenderingContext2D.font, override textName, textWeight and textStyle
                         'textFill': '#34495e',
                         'textOpacity': 1,
-                        'textHaloFill': '#FFFFDA',
+                        'textHaloFill': '#E6EBE6',
                         'textHaloRadius': 5,
                         'textWrapWidth': null,
                         'textWrapCharacter': '\n',

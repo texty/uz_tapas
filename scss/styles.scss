@@ -1,66 +1,518 @@
 @import "variables";
-@import "header";
 @import "footer";
 @import "donate";
 
-$wheal: #FFFFDA;
+$charts_background: #FFF7E3;
+
+@font-face {
+  font-family: 'e-Ukraine-Regular';
+  src: url('../font/e-Ukraine-Regular.eot'),
+  url('../font/e-Ukraine-Regular.eot?#iefix') format('embedded-opentype'),
+  url('../font/e-Ukraine-Regular.woff2') format('woff2'),
+  url('../font/e-Ukraine-Regular.woff') format('woff'),
+  url('../font/e-Ukraine-Regular.ttf') format('truetype');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'e-Ukraine-Medium';
+  src: url('../font/e-Ukraine-Medium.eot'),
+  url('../font/e-Ukraine-Medium.eot?#iefix') format('embedded-opentype'),
+  url('../font/e-Ukraine-Medium.woff2') format('woff2'),
+  url('../font/e-Ukraine-Medium.woff') format('woff'),
+  url('../font/e-Ukraine-Medium.ttf') format('truetype');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'e-Ukraine-Light';
+  src: url('../font/e-Ukraine-Light.eot'),
+  url('../font/e-Ukraine-Light.eot?#iefix') format('embedded-opentype'),
+  url('../font/e-Ukraine-Light.woff2') format('woff2'),
+  url('../font/e-Ukraine-Light.woff') format('woff'),
+  url('../font/e-Ukraine-Light.ttf') format('truetype');
+  font-weight: 300;
+}
 
 body {
-  height: 100%;
-  margin: 0;
-  font-family: 'ProximaNova', sans-serif;
-  background-color: $wheal;
-  font-size: 20px;
-  line-height: 1.6;
+  font-family: 'e-Ukraine-Regular', sans-serif;
+  margin:0;
+  padding:0;
 }
 
-.maptalks-wrapper {
-  //background-color: $wheal;
-}
-
-.chart-title {
-  text-align: center;
-  width: 60%;
-  margin: 100px auto 50px auto;
-  color: #1D1194;
-  font-size: 30px;
-}
-
-div.buttons {
-  width: max-content;
+/*-----------------------------------
+--------------- header --------------
+-------------------------------------*/
+header {
+  position: relative;
+  background-color: $charts_background;
+  width: 100%;
   margin: auto;
+
+.content {
+  max-width: 1680px;
+  position: relative;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+
+  @media(min-width: 1680px){
+    width: 1408px;
+  }
+  @media(min-width: 1280px) and (max-width: 1679px){
+    width: 1120px;
+  }
+  @media(min-width: 992px) and (max-width: 1279px){
+    width: 864px;
+  }
+  @media(max-width: 991px) and (min-width: 480px){
+    width: 448px;
+    display: block;
+  }
+  @media(max-width: 479px){
+    width: 100%;
+    display: block;
+  }
+
+
+  .image-container {
+    width: 100%;
+    grid-column: 6/13;
+    grid-row: 1/2;
+
+    img {
+      width: 100%;
+      @media(max-width: 991px){
+        margin-top: -15vh;
+      }
+    }
+  }
+}
+
+  h1 {
+    width: 80%;
+    font-family: 'e-Ukraine-Regular', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 56px;
+    line-height: 60px;
+    letter-spacing: -0.02em;
+    @media(max-width: 1280px) and (min-width: 992px){
+      width: 80%;
+      font-size: calc(30px + 1vw);
+      line-height: calc(40px + 1vw);
+    }
+    @media(max-width: 991px){
+      width: 100%;
+      margin: auto;
+      font-size: 32px;
+      line-height: 38px;
+    }
+    @media(max-width: 479px){
+      width: 90%;
+      margin: auto;
+    }
+  }
+
+
+  h2 {
+    width: 80%;
+    font-family: 'e-Ukraine-Regular', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 38px;
+    line-height: 40px;
+    letter-spacing: -0.02em;
+    @media(max-width: 1120px){
+      width: 80%;
+      font-size: calc(22px + 1vw);
+      line-height: calc(24px + 2vw);
+    }
+  }
+
+  .title-wrapper {
+    display: flex;
+    grid-column: 1/6;
+    grid-row: 1/2;
+
+    .title {
+      margin: 20px auto auto auto;
+      @media(max-width: 991px){
+        margin: 50px auto;
+      }
+    }
+  }
+
+
+  .logo-wrapper {
+    grid-column: 1/-1;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    grid-row: 2/3;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    background-color: rgba(255,255,255, 0.7);
+    @media(max-width:991px){
+      position: relative;
+      height: max-content;
+    }
+
+    .logo-list {
+      grid-column: 1/-1;
+      margin: 0 auto;
+      padding: 5px 0;
+      width: 100%;
+      height: max-content;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      @media(max-width: 991px){
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        margin: auto;
+      }
+      @media(max-width: 479px){
+        width: 90%;
+        margin: auto;
+      }
+
+      img {
+        height: 60%;
+        margin: 0 1em 0 0;
+        display: block;
+        width: auto;
+        @media(max-width: 991px){
+          margin: 0.5em;
+        }
+      }
+
+      #cyfra, #usaid, #eurasia {
+        max-height: 40px;
+        height: calc(20px + 2vw);
+        @media(max-width:991px){
+          height: calc(30px + 2vw);
+        }
+      }
+
+      #ukaid {
+        max-height: 50px;
+        height: calc(30px + 2vw);
+        @media(max-width:991px){
+          height: calc(45px + 2vw);
+        }
+      }
+
+      #texty {
+        max-height: 20px;
+      }
+
+    }
+  }
+}
+
+
+/*----------------------------------------
+----------- all text containers -----------
+------------------------------------------*/
+
+
+.text {
+  margin: 50px auto;
+  width: calc(100% - 100px);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  @media(min-width: 1680px){
+    width: 1408px;
+  }
+  @media(min-width: 1280px) and (max-width: 1679px){
+    max-width: 1120px;
+  }
+  @media(min-width: 992px) and (max-width: 1279px){
+    width: 864px;
+  }
+  @media(max-width: 991px) and (min-width: 480px){
+    width: 448px;
+    display: block;
+  }
+  @media(max-width:479px){
+    width: 90%;
+    margin: 0 auto;
+    display: block;
+  }
+
+
+  h2 {
+    font-style: normal;
+    font-weight: normal;
+    grid-column: 1/3;
+    font-size: 38px;
+    line-height: 40px;
+  }
+
+  p {
+    margin: 10px 0;
+    grid-column: 1/3;
+    font-family: 'e-Ukraine-Regular', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+.small {
+  font-family: 'e-Ukraine-Light', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px !important;
+  line-height: 1.6  !important;
+  margin: 0 0 20px 0;
+}
+
+.grey {
+  color: grey;
+}
+
+
+
+/*--------------------------------------
+---------- subtitles top gap  ---------
+-------------------------------------*/
+
+.chapter {
+  margin-top: 100px !important;
+}
+
+
+
+/*--------------------------------------
+--------------- info-numbers -----------
+-------------------------------------*/
+.attention {
+  margin: 20px 0;
+  padding: 50px 5%;
+  width: 80%;
+  background-color: $charts_background;
+  text {
+    font-size: calc(40px + 3vw);
+    @media(max-width: 1000px){
+      font-size: calc(40px + 2vw);
+    }
+  }
+}
+
+
+
+/*-----------------------------------
+--------------- slider --------------
+-------------------------------------*/
+
+.slider-container {
+  font-family: 'e-Ukraine-Regular', sans-serif;
+  margin: 50px auto;
+  width: calc(100% - 2em);
+  padding: 1em;
+  max-width: 1680px;
+  overflow-x: hidden;
+  @media(min-width: 1680px){
+    width: 1408px;
+  }
+  @media(min-width: 1280px) and (max-width: 1679px){
+    width: 1120px;
+  }
+  @media(min-width: 992px) and (max-width: 1279px){
+    width: 864px;
+  }
+  @media(min-width: 991px){
+    max-width: 100%;
+  }
+}
+
+.slider-head {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.slider-wrapper {
+  max-width: 850px;
+  width: 90%;
+  overflow-x: hidden;
+
+}
+
+
+.slider {
+  display: flex;
+  width: max-content;
+  transition: margin-left 1s;
+
+
+  .slider-item {
+    width: 250px;
+    margin-right: 50px;
+
+
+    img {
+      width: 100%;
+    }
+  }
+}
+
+h3 {
+  font-family: 'e-Ukraine-Regular', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 28px;
+  line-height: 32px;
+  color: #000000;
+}
+
+h4 {
+  font-family: 'e-Ukraine-Regular', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 28px;
+  color: #000000;
+}
+
+
+
+/*-----------------------------------
+-------- maps' toggle buttons -------
+-------------------------------------*/
+
+div.switchMap-buttons {
+  width: 80%;
+  margin: 50px auto 20px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  @media(min-width: 1680px){
+    grid-column:1/3;
+  }
+  @media(min-width: 1280px) and (max-width: 1679px){
+    grid-column:1/3;
+  }
+  @media(min-width: 992px) and (max-width: 1279px){
+    grid-column:1/4;
+  }
+  @media(max-width: 991px){
+  display: block;
+  grid-column:1/-1;
+}
+
+  .switchMap-button {
+    margin: 5px 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center
+  }
 }
 
 div.button {
+  grid-column: span 1;
   cursor:pointer;
   width: max-content;
   padding: 5px;
-  background: #1D1194;
   margin-right: 20px;
-  color: $wheal;
+  color: #000;
 }
+
+input[type="radio"] {
+  margin-right: 0;
+}
+
+.speed-map-buttons-container {
+  grid-column: 1/4;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  @media(max-width: 480px){
+    display: block;
+  }
+}
+
+.active {
+  border-bottom: 1px solid black;
+}
+
+
+/*-----------------------------------
+--------------- maps --------------
+-------------------------------------*/
+
+.container {
+  width: 100%;
+  height: 90%;
+  margin: auto;
+  @media(max-width: 991px){
+    height: 50%;
+  }
+}
+
+
+.maptalks-zoom-slider a.maptalks-zoom-zoomin, .maptalks-zoom-slider a.maptalks-zoom-zoomout {
+  display: block;
+  font-size: 24px  !important;
+  padding-top: 5px;
+  width: 30px  !important;
+  height: 25px  !important;
+  border: 1px solid #363539;
+  background: #E6EBE6 !important;
+  color: #000 !important;
+  line-height: 19px;
+  text-decoration: none;
+  margin: 5px;
+  border-radius: 4px;
+}
+
 
 canvas {
   width: 100%;
 }
 
+
+/*-----------------------------------
+---------- scatterplot --------------
+-------------------------------------*/
+
 #scatter {
-  margin-bottom: 100px;
+  p {
+    grid-column: 1/-1;
+    font-family: 'e-Ukraine-Light', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px !important;
+    margin-left: 60px;
+  }
+
   svg {
     display: block;
     margin: auto;
 
+    text.axis-labels {
+      font-family: 'e-Ukraine-Light', sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 12px !important;
+    }
+
     path.domain {
-      //display: none;
+      display: none;
     }
 
     g.tick line {
-      stroke: #1D1194;
+      stroke: #CCCCCC;
     }
 
     g.tick text {
-      fill: #1D1194;
+      font-family: 'e-Ukraine-Light', sans-serif;
+      fill: #000;
     }
   }
 }
