@@ -119,9 +119,9 @@ Promise.all([
         //     .domain([d3.min(df, function(d){ return +d.mdn_speed }), d3.max(df, function(d){ return +d.mdn_speed })])
         //     .range(["#1D1194", "#E78B8A"]);
 
-        var color = d3.scaleQuantize()
+        var color = d3.scaleLinear()
             .domain([d3.min(df, function(d){ return +d.mdn_speed }), d3.max(df, function(d){ return +d.mdn_speed })])
-            .range(["#007EFF", "#007EFF4D", "#AA2B8E4D", "#AA2B8E"]);
+            .range(["#15CF74", "#FF3A44"]);
 
 
         // максимальна к-ть вагонів для line width domain
