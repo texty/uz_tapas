@@ -121,6 +121,7 @@ Promise.all([
             .attr("cy", function (d) { return yScale(d.avrg_money_UAH); } )
             .attr("r", 6)
             .style("fill", function(d){ return color(d.median_speed_km_day)})
+            .style("opacity", 0.7);
 
 
         points
@@ -131,6 +132,7 @@ Promise.all([
             .attr("cy", function (d) { return yScale(d.avrg_money_UAH); } )
             .attr("r", 6)
             .style("fill", function(d){ return color(d.median_speed_km_day)})
+            .style("opacity", 0.7)
            ;
 
 

@@ -50,7 +50,13 @@ Promise.all([
     d3.csv("data/speed_maps_csv/wagons/speed_ore_wagons_directions.csv"), //7
 
     d3.csv("data/speed_maps_csv/train/speed_stone_trains_directions.csv"), //8
-    d3.csv("data/speed_maps_csv/wagons/speed_stone_wagons_directions.csv") //9
+    d3.csv("data/speed_maps_csv/wagons/speed_stone_wagons_directions.csv"), //9
+
+
+    d3.csv("data/speed_maps_csv/train/speed_coal_trains_directions_labels.csv"), //10
+    d3.csv("data/speed_maps_csv/train/speed_grain_trains_directions_labels.csv"), //11
+    d3.csv("data/speed_maps_csv/train/speed_ore_trains_directions_labels.csv") //12
+
 
 
 ]).then(function(data) {
@@ -121,7 +127,7 @@ Promise.all([
 
         var color = d3.scaleLinear()
             .domain([d3.min(df, function(d){ return +d.mdn_speed }), d3.max(df, function(d){ return +d.mdn_speed })])
-            .range(["#15CF74", "#FF3A44"]);
+            .range(["#AA2B8E", "#007EFF"]);
 
 
         // максимальна к-ть вагонів для line width domain
@@ -129,7 +135,7 @@ Promise.all([
 
         var scale = d3.scaleLinear()
             .domain([0, maxWag])
-            .range([1, 8]);
+            .range([1, 12]);
 
 
         // /* середня к-ть вагонів для фільтру */
@@ -147,7 +153,10 @@ Promise.all([
             d.no_wagons = +d.no_wagons;
 
 
-            let speedColor = color(d.mdn_speed);
+            var speedColor = color(d.mdn_speed);
+            speedColor = RGBToHex(speedColor);
+
+
             let lineWidth = scale(d.no_wagons);
 
             // blue circle
@@ -155,12 +164,12 @@ Promise.all([
                 [d.lon_sender, d.lat_sender], {
                     symbol: {
                         'markerType': 'ellipse',
-                        'markerFill': '#1D1194',
+                        'markerFill': speedColor,
                         'markerFillOpacity': 0.8,
-                        'markerLineColor': '#fff',
+                        'markerLineColor': speedColor,
                         'markerLineWidth': 3,
-                        'markerWidth': 0,
-                        'markerHeight': 0
+                        'markerWidth': 5,
+                        'markerHeight': 5
                     }
                 }
             );
@@ -170,36 +179,41 @@ Promise.all([
                 [d.lon_receiver, d.lat_receiver], {
                     'symbol': {
                         'markerType': 'ellipse',
-                        'markerFill': '#E78B8A',
-                        'markerFillOpacity': 0.8,
-                        'markerLineColor': '#fff',
+                        'markerFill': speedColor,
+                        'markerFillOpacity': 0.3,
+                        'markerLineColor': speedColor,
+                        'markerLineOpacity': 0.3,
                         'markerLineWidth': 3,
-                        'markerWidth': 0,
-                        'markerHeight': 0
+                        'markerWidth': 5,
+                        'markerHeight': 5
                     }
                 }
             );
+
+            var src_tip = new maptalks.ui.ToolTip(d.sender);
+            var dst_tip = new maptalks.ui.ToolTip(d.receiver);
+            src_tip.addTo(src);
+            dst_tip.addTo(dst);
+
 
 
             // Arc Connector Line
             var line = new maptalks.ArcConnectorLine(src, dst, {
                 arcDegree: 90,
                 showOn: 'always',
-                arrowStyle : 'classic', // we only have one arrow style now
-                arrowPlacement : 'vertex-last', //vertex-first, vertex-last, vertex-firstlast, point
+                //arrowStyle : 'classic', // we only have one arrow style now
+                //arrowPlacement : 'vertex-last', //vertex-first, vertex-last, vertex-firstlast, point
 
                 symbol: {
-                    // 'lineColor' : {
-                    //     'type' : 'linear',
-                    //     'colorStops' : [
-                    //         [0.00, '#1D1194'],
-                    //         // [1 / 4, 'orange'],
-                    //         // [2 / 4, 'green'],
-                    //         // [3 / 4, 'aqua'],
-                    //         [1.00, '#E78B8A']
-                    //     ]
-                    // },
-                    'lineColor': speedColor,
+                    'lineColor' : {
+                        'type' : 'linear',
+                        'colorStops' : [
+                            [0.00, speedColor],
+                            [0.5, speedColor + '33'],
+                            [1.00, speedColor + '05']
+                        ]
+                    },
+                    //'lineColor': speedColor + '33',
                     // lineWidth: d.no_wagons/4000,
                     lineWidth: lineWidth
                 }
@@ -253,9 +267,9 @@ Promise.all([
     var label_ore = new maptalks.VectorLayer('label').addTo(speed_ore);
     var label_stone = new maptalks.VectorLayer('label').addTo(speed_stone);
 
-    function drawLabels(label_layer) {
+    function drawLabels(label_df, label_layer) {
 
-        data[1].forEach(function (d) {
+        label_df.forEach(function (d) {
             d.Latitude = +d.Latitude;
             d.Longitude = +d.Longitude;
 
@@ -274,7 +288,7 @@ Promise.all([
                         'textFill': '#34495e',
                         'textOpacity': 1,
                         'textHaloFill': backgroundColor,
-                        'textHaloRadius': 5,
+                        'textHaloRadius': 2,
                         'textWrapWidth': null,
                         'textWrapCharacter': '\n',
                         'textLineSpacing': 0,
@@ -291,12 +305,33 @@ Promise.all([
         });
     }
 
-    drawLabels(label_coal);
-    drawLabels(label_grain);
-    drawLabels(label_ore);
-    drawLabels(label_stone);
+    drawLabels(data[10], label_coal);
+    drawLabels(data[11], label_grain);
+    drawLabels(data[12], label_ore);
+    drawLabels(data[1], label_stone);
 
 
 
 
 });
+
+
+function RGBToHex(rgb) {
+    // Choose correct separator
+    let sep = rgb.indexOf(",") > -1 ? "," : " ";
+    // Turn "rgb(r,g,b)" into [r,g,b]
+    rgb = rgb.substr(4).split(")")[0].split(sep);
+
+    let r = (+rgb[0]).toString(16),
+        g = (+rgb[1]).toString(16),
+        b = (+rgb[2]).toString(16);
+
+    if (r.length == 1)
+        r = "0" + r;
+    if (g.length == 1)
+        g = "0" + g;
+    if (b.length == 1)
+        b = "0" + b;
+
+    return "#" + r + g + b;
+}

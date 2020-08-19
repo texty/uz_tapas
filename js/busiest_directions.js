@@ -26,7 +26,7 @@ map.setZoom(default_zoom);
 
 Promise.all([
     d3.csv("data/busiest_directions.csv"),
-    d3.csv("data/map_labels.csv"),
+    d3.csv("data/busiest_directions_labels.csv"),
     d3.json("data/UKR_adm1.json")
 ]).then(function(data) {
 
@@ -49,6 +49,9 @@ Promise.all([
 
 
     data[0].forEach(function (d) {
+
+        console.log(d.sender);
+        console.log(d.receiver);
         d.lat_sender = +d.lat_sender;
         d.lon_sender = +d.lon_sender;
         d.lat_receiver = +d.lat_receiver;
@@ -61,12 +64,12 @@ Promise.all([
             [d.lon_sender, d.lat_sender], {
                 symbol: {
                     'markerType': 'ellipse',
-                    'markerFill': '#5B5AFF',
+                    'markerFill': '#FF3800',
                     'markerFillOpacity': 0.7,
                     'markerLineColor': '#fff',
                     'markerLineWidth': 3,
-                    'markerWidth': 10,
-                    'markerHeight': 10
+                    'markerWidth': 13,
+                    'markerHeight': 13
                 }
             }
         );
@@ -76,15 +79,20 @@ Promise.all([
             [d.lon_receiver, d.lat_receiver], {
                 'symbol': {
                     'markerType': 'ellipse',
-                    'markerFill': '#FF3800',
+                    'markerFill': '#5B5AFF',
                     'markerFillOpacity': 0.8,
                     'markerLineColor': '#fff',
                     'markerLineWidth': 3,
-                    'markerWidth': 10,
-                    'markerHeight': 10
+                    'markerWidth': 13,
+                    'markerHeight': 13
                 }
             }
         );
+
+        var src_tip = new maptalks.ui.ToolTip(d.sender);
+        var dst_tip = new maptalks.ui.ToolTip(d.receiver);
+        src_tip.addTo(src);
+        dst_tip.addTo(dst);
 
 
         // Arc Connector Line
@@ -96,9 +104,7 @@ Promise.all([
                     'type' : 'linear',
                     'colorStops' : [
                         [0.00, '#FF3800'],
-                        [0.5, '#FF380033'],
-                        // [2 / 4, 'green'],
-                        // [3 / 4, 'aqua'],
+                        [0.5, '#FF380033'],                        
                         [1.00, '#FF380005']
                     ]
                 },
@@ -119,7 +125,7 @@ Promise.all([
         d.Latitude = +d.Latitude;
         d.Longitude = +d.Longitude;
 
-        new maptalks.Marker(
+        var marker = new maptalks.Marker(
             [d.Longitude, d.Latitude], {
                 'properties': {
                     'name': ''
@@ -148,6 +154,9 @@ Promise.all([
                 }
             }
         ).addTo(label_layer);
+
+
+
     });
 
 });
